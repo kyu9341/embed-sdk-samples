@@ -16,3 +16,10 @@ The `code-samples` folder contains the following collections:
 ## Resources
 
 Please refer to the [Adobe Express Embed SDK Overview](https://developer.adobe.com/express/embed-sdk/docs/guides/) on the Adobe Developer website for more information, or visit the [Adobe Express Embed SDK Community Forum](https://community.adobe.com/t5/adobe-express-embed-sdk/ct-p/ct-express-embed-sdk?page=1&sort=latest_replies&lang=all&tabid=all) to ask questions and get help.
+
+## Contributing
+
+We welcome contributions to this repository. Please read the [Code of Conduct](./CODE_OF_CONDUCT.md) for more information.
+
+> [!CAUTION]
+> For the time being, `.gitignore` is **not excluding** `.env` files from the repository. Please make sure you **do not** commit any `.env` files that contain sensitive information.
