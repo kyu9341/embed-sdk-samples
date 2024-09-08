@@ -1,0 +1,26 @@
+{
+  "name": "embed-sdk-getting-started",
+  "version": "1.0.0",
+  "description": "Adobe Express Embed SDK Getting Started sample",
+  "type": "module",
+  "keywords": [
+    "Embed SDK",
+    "Adobe Express"
+  ],
+  "author": "Davide Barranca",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.1",
+    "vite-plugin-mkcert": "^1.17.6"
+  },
+  "dependencies": {
+    "@spectrum-web-components/button": "^0.47.1",
+    "@spectrum-web-components/divider": "^0.47.1",
+    "@spectrum-web-components/theme": "^0.47.1"
+  }
+}
