@@ -53,7 +53,7 @@ const callbacks = {
     expressImage.src = publishParams.asset[0].data;
     console.log("Image data", publishParams.asset[0].data);
     // enable the editDesign button
-    document.getElementById("editDesign").disabled = false;
+    // document.getElementById("editBtn").disabled = false;
   },
   onError: (err) => {
     console.error("Error!", err.toString());
@@ -99,13 +99,13 @@ document.getElementById("createBtn").onclick = async () => {
   editor.create(docConfig, appConfig, exportConfig, containerConfig);
 };
 
-// Click handler for the Edit Design button
-document.getElementById("editBtn").onclick = async () => {
-  // Opening the existing project by ID
-  let docConfig = { documentId: existingProjectId };
-  // Using the global appConfig and exportConfig
-  editor.edit(docConfig, appConfig, exportConfig, containerConfig);
-};
+// // Click handler for the Edit Design button
+// document.getElementById("editBtn").onclick = async () => {
+//   // Opening the existing project by ID
+//   let docConfig = { documentId: existingProjectId };
+//   // Using the global appConfig and exportConfig
+//   editor.edit(docConfig, appConfig, exportConfig, containerConfig);
+// };
 
 // Click handler for the Text To Image button
 document.getElementById("textToImageBtn").onclick = async () => {
@@ -141,4 +141,16 @@ document.getElementById("exportOptionGroupBtn").onclick = async () => {
   let docConfig = { canvasSize: "BusinessCard" };
 
   editor.create(docConfig, appConfig, exportOptionGroupConfig, containerConfig);
+};
+
+// Click handler for the Edit Image button
+document.getElementById("editImageBtn").onclick = async () => {
+  const data = expressImage.src;
+
+  module.editImage(
+    {asset: {data, dataType: "base64", type: "image"}},
+    {callbacks},
+    undefined,
+    containerConfig,
+  );
 };
