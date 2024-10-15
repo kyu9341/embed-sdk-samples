@@ -113,3 +113,32 @@ document.getElementById("textToImageBtn").onclick = async () => {
 
   module.createImageFromText({promptText: input.value, callbacks}, undefined, containerConfig);
 };
+
+const exportOptionGroupConfig = [
+  {
+    type: "continue-editing",
+    label: "Export Option Group",
+    style: "button",
+    options: [
+      {
+        id: "option1",
+        label: "Option1",
+        action: {
+          target: "express",
+          intent: "add-text"
+        },
+        style: {
+          uiType: "button"
+        }
+      }
+    ]
+  }
+];
+
+// Click handler for Use Export Option Group
+// When I click on it, I get the error [Embed SDK] Error: INVALID_PARAMETERS.
+document.getElementById("exportOptionGroupBtn").onclick = async () => {
+  let docConfig = { canvasSize: "BusinessCard" };
+
+  editor.create(docConfig, appConfig, exportOptionGroupConfig, containerConfig);
+};
