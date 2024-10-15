@@ -61,7 +61,12 @@ const callbacks = {
 };
 
 // Configuration for the app, shared by both Create and Edit flows
-const appConfig = { selectedCategory: "media", callbacks };
+const appConfig = { 
+  selectedCategory: "media",
+  allowedFileTypes: ["image/jpeg", "image/png", "video/mp4"],
+  callbacks,
+  multiPage: true
+};
 
 // Configuration for the export options made available to the user
 // when creating or editing a document
