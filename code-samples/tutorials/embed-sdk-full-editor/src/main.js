@@ -27,19 +27,18 @@ import "@spectrum-web-components/divider/sp-divider.js";
 await import("https://cc-embed.adobe.com/sdk/v4/CCEverywhere.js");
 console.log("CCEverywhere loaded", window.CCEverywhere);
 
+
 // Parameters for initializing the Adobe Express Embed SDK
 const hostInfo = {
   clientId: import.meta.env.VITE_API_KEY,
-  appName: "Embed SDK Sample",
+  appName: "Sample Test",
 };
 
 // Prompts the user to login only when exporting/saving the document
-const configParams = {
-  loginMode: "delayed",
-};
+const configParams = {locale: "ko_JR", loginMode: "delayed"};
 
 // Initializing the Adobe Express Embed SDK
-const { editor } = await window.CCEverywhere.initialize(hostInfo, configParams);
+const { editor, module } = await window.CCEverywhere.initialize(hostInfo, configParams);
 
 // Will hold the project ID when a document is saved on Adobe Express
 var existingProjectId = null;
@@ -81,12 +80,18 @@ const exportConfig = [
   },
 ];
 
+const containerConfig = {
+  size: {
+    width: 1000, height: 800, unit: "px"
+  },
+};
+
 // Click handler for the Create Design button
 document.getElementById("createBtn").onclick = async () => {
   // Presetting the canvas size
   let docConfig = { canvasSize: "BusinessCard" };
   // Using the global appConfig and exportConfig
-  editor.create(docConfig, appConfig, exportConfig);
+  editor.create(docConfig, appConfig, exportConfig, containerConfig);
 };
 
 // Click handler for the Edit Design button
@@ -94,5 +99,12 @@ document.getElementById("editBtn").onclick = async () => {
   // Opening the existing project by ID
   let docConfig = { documentId: existingProjectId };
   // Using the global appConfig and exportConfig
-  editor.edit(docConfig, appConfig, exportConfig);
+  editor.edit(docConfig, appConfig, exportConfig, containerConfig);
+};
+
+// Click handler for the Text To Image button
+document.getElementById("textToImageBtn").onclick = async () => {
+  const input = document.getElementById("textToImageInput");
+
+  module.createImageFromText({promptText: input.value, callbacks}, undefined, containerConfig);
 };
